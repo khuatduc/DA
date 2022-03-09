@@ -1,0 +1,186 @@
+    import functools
+    import numpy as np
+
+    from rsarl.envs import DeepRMSAEnv, make_multiprocess_vector_env
+    from rsarl.requester import UniformRequester
+    from rsarl.networks import SingleFiberNetwork
+    from rsarl.evaluator import batch_warming_up, batch_evaluation, batch_summary
+    # exp settings
+    _file = open('result1.csv', 'w')
+    avg_request_arrival_rate=0.6
+    while(avg_request_arrival_rate<=1.5):
+    n_requests = 100
+    n_envs, seed = 4, 0
+
+    # build network
+    net = SingleFiberNetwork("nsf", n_slot=100, is_weight=True)
+    # build requester
+    requester = UniformRequester(
+        net.n_nodes,
+        avg_service_time=10,
+        avg_request_arrival_rate=avg_request_arrival_rate)
+    # build env
+    env = DeepRMSAEnv(net, requester)
+    # envs for training and evaluation
+    envs = make_multiprocess_vector_env(env, n_envs, seed, test=False)
+    test_envs = make_multiprocess_vector_env(env, n_envs, seed, test=True)
+    def _evaluation(envs, agent, n_requests): 
+        # start simulation
+        envs.reset()
+        # 
+        batch_warming_up(envs, agent, n_requests=3000)
+        # evaluation
+        experiences = batch_evaluation(envs, agent, n_requests=n_requests)
+        # calc performance
+        blocking_probs, avg_utils, total_rewards = batch_summary(experiences)
+
+        for env_id, (blocking_prob, avg_util, total_reward) in enumerate(zip(blocking_probs, avg_utils, total_rewards)):
+            print(f'[{env_id}-th ENV]Blocking Probability: {blocking_prob}')
+            print(f'[{env_id}-th ENV]Avg. Slot-utilization: {avg_util}')
+            print(f'[{env_id}-th ENV]Total Rewards: {total_reward}')
+            _file.write(str(n_envs)+","+str(avg_request_arrival_rate)+","+str(env_id)+","+str(blocking_prob)+","+str(avg_util)+","+str(total_reward)+"\n");
+            
+    # evaluation with test environments
+    evaluation = functools.partial(_evaluation, envs=test_envs, n_requests=n_requests)
+    import pfrl
+    import torch
+    import torch.nn as nn
+    class DeepRMSAv1_DNN(torch.nn.Module):
+
+        def __init__(self, SLOT: int, ICH: int, K: int, n_edges: int):
+            super().__init__()
+            self.SLOT = SLOT
+            # CNN
+            self.conv = nn.Sequential(*[
+                nn.Conv2d(ICH, 1, kernel_size=(1,1), stride=(1, 1)),
+                nn.ReLU(),
+                # 2 conv layers with16 filters
+                nn.Conv2d(1, 16, kernel_size=(n_edges,1), stride=(1, 1)),
+                nn.ReLU(),
+                nn.Conv2d(16, 16, kernel_size=(1,1), stride=(1, 1)),
+                nn.ReLU(),
+                # 2 depthwise conv layers with 1 filter
+                nn.ZeroPad2d((1, 0, 0, 0)), # left, right, top, bottom
+                nn.Conv2d(16, 16, kernel_size=(1,2), stride=(1, 1), groups=16),
+                nn.ReLU(),
+                nn.ZeroPad2d((1, 0, 0, 0)),
+                nn.Conv2d(16, 16, kernel_size=(1,2), stride=(1, 1), groups=16),
+                nn.ReLU(),
+            ])
+            # fc
+            self.fc = nn.Sequential(*[
+                nn.Linear(SLOT*16, 128),
+                nn.ReLU(),
+                nn.Linear(128, 50),
+                nn.ReLU(),
+                nn.Linear(50, K),
+            ])      
+
+        def forward(self, x):
+            h = x
+            h = self.conv(h)
+            h = h.view(-1, self.SLOT*16)
+            h = self.fc(h)
+            return pfrl.action_value.DiscreteActionValue(h)
+    # Experimental Settings
+    K = 5
+    # slot-table(1) + one-hot-node * 2 + bandwidth(1)
+    ICH = 1 + 2 * net.n_nodes + 1
+    # build DNN for Q-function
+    q_func = DeepRMSAv1_DNN( net.n_slot, ICH, K, net.n_edges)
+    # Specify optimizer 
+    optimizer = torch.optim.Adam(q_func.parameters(), eps=1e-2)
+    def _action_sampler(k):
+        return np.random.randint(0, k)
+
+    # random action function
+    action_sampler = functools.partial(_action_sampler, k=K)
+    # Set the discount factor that discounts future rewards.
+    gamma = 0.99
+
+    # Use epsilon-greedy for exploration
+    explorer = pfrl.explorers.ConstantEpsilonGreedy(
+        epsilon=0.1, random_action_func=action_sampler)
+
+    # DQN uses Experience Replay.
+    # Specify a replay buffer and its capacity.
+    replay_buffer = pfrl.replay_buffers.ReplayBuffer(capacity=10 ** 6, num_steps=50)
+    # Now create an agent that will interact with the environment.
+    DDQN = pfrl.agents.DoubleDQN(
+        q_func,
+        optimizer,
+        replay_buffer,
+        gamma,
+        explorer,
+        minibatch_size=50,
+        update_interval=1,
+        replay_start_size=500,
+        target_update_interval=100,
+    
+    )
+    import numpy as np
+    import networkx as nx
+    from rsarl.data import Action
+    from rsarl.agents import KSPDRLAgent
+    from rsarl.utils import cal_slot, sort_tuple
+    from rsarl.algorithms import SpectrumAssignment
+    def vectorize(n_nodes: int, node_id: int):
+        mp = np.eye(n_nodes, dtype=np.float32)[node_id].reshape(-1, 1, 1)
+        return mp
+
+    class DRLAgent(KSPDRLAgent):
+
+        def preprocess(self, obs):
+            """
+            """
+            net = obs.net
+            source, destination, bandwidth, duration = obs.request
+            # slot table
+            whole_slot = np.array(list(nx.get_edge_attributes(net.G, name="slot").values()))
+            whole_slot = whole_slot.reshape(1, net.n_edges, net.n_slot).astype(np.float32)
+            # source, destination, bandwidth map
+            smap = np.ones_like(whole_slot) * vectorize(net.n_nodes, source)
+            dmap = np.ones_like(whole_slot) * vectorize(net.n_nodes, destination)
+            bmap = np.ones_like(whole_slot) * bandwidth
+            # concate: (1, ICH, #edges, #slots)
+            fvec = np.concatenate([whole_slot, smap, dmap, bmap], axis=0)
+            return fvec.astype(np.float32, copy=False)
+
+        def map_drlout_to_action(self, obs, out):
+            net = obs.net
+            s, d, bandwidth, duration = obs.request
+            paths = self.path_table[sort_tuple((s, d))]
+            # map
+            path = paths[out]
+
+            #required slots
+            path_len = net.distance(path)
+            n_req_slot = cal_slot(bandwidth, path_len)
+            #FF
+            path_slot = net.path_slot(path)
+            slot_index = SpectrumAssignment.first_fit(path_slot, n_req_slot)
+            if slot_index is None:
+                return None
+            else:
+                return Action(path, slot_index, n_req_slot, duration)
+    agent = DRLAgent(k=5, drl=DDQN)
+    # prepare path table
+    agent.prepare_ksp_table(net)
+    # Batch act
+    obses = envs.reset()
+    resets = [False for _ in range(len(obses))]
+    for train_cnt in range(200000):
+        acts = agent.batch_act(obses)
+        obses, rews, dones, infos = envs.step(acts)
+        agent.batch_observe(obses, rews, dones, resets)
+
+        # Make mask(not_end). 0 if done/reset, 1 if pass
+        not_end = np.logical_not(dones)
+        obses = envs.reset(not_end)
+    
+        if train_cnt % 20000 == 0:
+            print(f'[{train_cnt}-th EVAL]')
+            test_envs.reset()
+            with agent.drl.eval_mode():
+                evaluation(agent=agent)
+    avg_request_arrival_rate=avg_request_arrival_rate+0.1;
