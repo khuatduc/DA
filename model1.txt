@@ -1,0 +1,214 @@
+03/09 22:22:31: Launching 'demo' on Pixel 2 XL API 29.
+App restart successful without requiring a re-install.
+$ adb shell am start -n "com.google.android.exoplayer2.demo/com.google.android.exoplayer2.demo.SampleChooserActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
+Connected to process 8575 on device 'Pixel_2_XL_API_29 [emulator-5554]'.
+Capturing and displaying logcat messages from application. This behavior can be disabled in the "Logcat output" section of the "Debugger" settings page.
+I/exoplayer2.dem: The ClassLoaderContext is a special shared library.
+D/libEGL: Emulator has host GPU support, qemu.gles is set to 1.
+W/libc: Unable to set property "qemu.gles" to "1": connection failed; errno=13 (Permission denied)
+D/libEGL: loaded /vendor/lib/egl/libEGL_emulation.so
+W/RenderThread: type=1400 audit(0.0:37): avc: denied { write } for name="property_service" dev="tmpfs" ino=7425 scontext=u:r:untrusted_app_27:s0:c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0 app=com.google.android.exoplayer2.demo
+D/libEGL: loaded /vendor/lib/egl/libGLESv1_CM_emulation.so
+D/libEGL: loaded /vendor/lib/egl/libGLESv2_emulation.so
+D/HostConnection: HostConnection::get() New Host Connection established 0xd854c190, tid 8607
+D/HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_YUV_Cache ANDROID_EMU_async_unmap_buffer ANDROID_EMU_sync_buffer_data GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_async_frame_commands ANDROID_EMU_gles_max_version_2 
+D/EGL_emulation: eglCreateContext: 0xd851a3c0: maj 2 min 0 rcv 2
+D/EGL_emulation: eglMakeCurrent: 0xd851a3c0: ver 2 0 (tinfo 0xd850f220)
+W/Gralloc3: mapper 3.x is not supported
+D/HostConnection: createUnique: call
+D/HostConnection: HostConnection::get() New Host Connection established 0xd854c3c0, tid 8607
+D/HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_YUV_Cache ANDROID_EMU_async_unmap_buffer ANDROID_EMU_sync_buffer_data GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_async_frame_commands ANDROID_EMU_gles_max_version_2 
+D/eglCodecCommon: allocate: Ask for block of size 0x1000
+    allocate: ioctl allocate returned offset 0x3ffff4000 size 0x2000
+D/EGL_emulation: eglMakeCurrent: 0xd851a3c0: ver 2 0 (tinfo 0xd850f220)
+I/Choreographer: Skipped 35 frames!  The application may be doing too much work on its main thread.
+W/ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@63b48d
+I/tflite: Created TensorFlow Lite delegate for NNAPI.
+I/tflite: Initialized TensorFlow Lite runtime.
+I/Manager: DeviceManager::DeviceManager
+    findAvailableDevices
+I/BandwidthRecurrentModel: TFLite model loaded with NNAPI
+W/exoplayer2.dem: Accessing hidden method Landroid/media/AudioTrack;->getLatency()I (greylist, reflection, allowed)
+I/ExoPlayerImpl: Init fae8369 [ExoPlayerLib/2.7.3] [generic_x86, Android SDK built for x86, Google, 29]
+D/EventLogger: state [0.15, true, I]
+I/System.out: urihttp://192.168.111.132/hls/video8/master.m3u8
+D/EventLogger: state [0.17, true, B]
+I/Choreographer: Skipped 39 frames!  The application may be doing too much work on its main thread.
+D/NetworkSecurityConfig: No Network Security Config specified, using platform default
+D/EGL_emulation: eglMakeCurrent: 0xd851a3c0: ver 2 0 (tinfo 0xd850f220)
+I/OpenGLRenderer: Davey! duration=1093ms; Flags=1, IntendedVsync=714644477016, Vsync=715294476990, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=715309450600, AnimationStart=715309563400, PerformTraversalsStart=715309903300, DrawStart=715397539700, SyncQueued=715401595400, SyncStart=715414519900, IssueDrawCommandsStart=715422610300, SwapBuffers=715701749700, FrameCompleted=715751187200, DequeueBufferDuration=14000000, QueueBufferDuration=1790000, 
+D/EGL_emulation: eglMakeCurrent: 0xd851a3c0: ver 2 0 (tinfo 0xd850f220)
+I/OpenGLRenderer: Davey! duration=1143ms; Flags=1, IntendedVsync=714644477016, Vsync=715294476990, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=715309450600, AnimationStart=715309563400, PerformTraversalsStart=715309903300, DrawStart=715762763900, SyncQueued=715764526700, SyncStart=715771296800, IssueDrawCommandsStart=715771534600, SwapBuffers=715782989100, FrameCompleted=715795196100, DequeueBufferDuration=826000, QueueBufferDuration=2635000, 
+D/EventLogger: timelineChanged [periodCount=1, windowCount=1, reason=PREPARED
+D/EventLogger:   period [161.99]
+      window [161.99, true, false]
+D/EventLogger: ]
+D/EventLogger: loading [true]
+D/EGL_emulation: eglMakeCurrent: 0xd851a3c0: ver 2 0 (tinfo 0xd850f220)
+D/EGL_emulation: eglMakeCurrent: 0xd851a3c0: ver 2 0 (tinfo 0xd850f220)
+I/VideoCapabilities: Unsupported profile 4 for video/mp4v-es
+E/bandwidth::: -1
+D/EGL_emulation: eglMakeCurrent: 0xd851a3c0: ver 2 0 (tinfo 0xd850f220)
+E/bandwidth::: 9866416
+D/EventLogger: audioEnabled [1.25]
+D/EventLogger: Tracks [
+D/EventLogger:   Renderer:0 [
+        Group:0, adaptive_supported=YES [
+          [X] Track:0, id=0, mimeType=video/avc, bitrate=5605600, res=1920x1080, supported=YES
+D/EventLogger:       [X] Track:1, id=1, mimeType=video/avc, bitrate=3405600, res=1280x720, supported=YES
+          [X] Track:2, id=2, mimeType=video/avc, bitrate=2305600, res=854x480, supported=YES
+          [X] Track:3, id=3, mimeType=video/avc, bitrate=1152800, res=640x360, supported=YES
+          [X] Track:4, id=4, mimeType=video/avc, bitrate=1152800, res=426x240, supported=YES
+        ]
+      ]
+      Renderer:1 [
+        Group:0, adaptive_supported=N/A [
+          [X] Track:0, id=1/15, mimeType=audio/mp4a-latm, channels=2, sample_rate=44100, language=und, supported=YES
+D/EventLogger:     ]
+      ]
+      Renderer:2 [
+        Group:0, adaptive_supported=N/A [
+          [ ] Track:0, id=1/8219, mimeType=application/cea-608, supported=YES
+        ]
+      ]
+      Renderer:3 [
+D/EventLogger:     Group:0, adaptive_supported=N/A [
+          [X] Track:0, id=1/21, mimeType=application/id3, supported=YES
+        ]
+      ]
+D/EventLogger: ]
+D/EGL_emulation: eglMakeCurrent: 0xd851a3c0: ver 2 0 (tinfo 0xd850f220)
+E/bandwidth::: 9866416
+I/OMXClient: IOmx service obtained
+D/SurfaceUtils: connecting to surface 0xc0e88808, reason connectToSurface
+I/MediaCodec: [OMX.android.goldfish.h264.decoder] setting surface generation to 8780801
+D/SurfaceUtils: disconnecting from surface 0xc0e88808, reason connectToSurface(reconnect)
+    connecting to surface 0xc0e88808, reason connectToSurface(reconnect)
+E/ACodec: [OMX.android.goldfish.h264.decoder] setPortMode on output to DynamicANWBuffer failed w/ err -1010
+I/ACodec: codec does not support config priority (err -1010)
+D/SurfaceUtils: disconnecting from surface 0xc0e88808, reason setNativeWindowSizeFormatAndUsage
+D/SurfaceUtils: connecting to surface 0xc0e88808, reason setNativeWindowSizeFormatAndUsage
+D/SurfaceUtils: set up nativeWindow 0xc0e88808 for 1920x1080, color 0x13, rotation 0, usage 0x1002900
+I/OMXClient: IOmx service obtained
+I/ACodec: codec does not support config priority (err -2147483648)
+D/EventLogger: audioDecoderInitialized [1.78, OMX.google.aac.decoder]
+D/EventLogger: audioFormatChanged [1.79, id=1/15, mimeType=audio/mp4a-latm, channels=2, sample_rate=44100, language=und]
+D/EventLogger: audioSessionId [33]
+D/EventLogger: state [2.16, true, R]
+E/bandwidth::: 9866416
+I/exoplayer2.dem: NativeAlloc concurrent copying GC freed 19999(1272KB) AllocSpace objects, 6(216KB) LOS objects, 49% free, 2804KB/5608KB, paused 2.832ms total 227.858ms
+D/EventLogger: state [5.12, true, B]
+E/bandwidth::: 12464415
+E/bandwidth::: 12840452
+D/AudioTrack: getTimestamp_l(11): device stall time corrected using current time 729369795900
+D/EventLogger: state [14.26, true, R]
+E/bandwidth::: 13610848
+E/bandwidth::: 13718146
+E/bandwidth::: 13579530
+E/bandwidth::: 13611742
+E/bandwidth::: 14565257
+I/exoplayer2.dem: Background concurrent copying GC freed 1437(100KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 5684KB/11MB, paused 17.639ms total 53.991ms
+E/bandwidth::: 14342972
+E/bandwidth::: 14016658
+E/bandwidth::: 13995947
+E/bandwidth::: 14065414
+E/bandwidth::: 14814566
+E/bandwidth::: 16063282
+E/bandwidth::: 16254787
+E/bandwidth::: 15018112
+E/bandwidth::: 15348892
+E/bandwidth::: 15401495
+E/bandwidth::: 15126554
+E/bandwidth::: 14424373
+E/bandwidth::: 13528478
+E/bandwidth::: 13377282
+E/bandwidth::: 14378752
+E/bandwidth::: 13894968
+E/bandwidth::: 15047312
+E/bandwidth::: 14173712
+E/bandwidth::: 13750805
+E/bandwidth::: 13556278
+E/bandwidth::: 14060261
+E/bandwidth::: 15408337
+E/bandwidth::: 15262435
+E/bandwidth::: 15575504
+E/bandwidth::: 16216942
+E/bandwidth::: 15273335
+E/bandwidth::: 14227826
+E/bandwidth::: 13946489
+E/bandwidth::: 13523268
+E/bandwidth::: 14650655
+E/bandwidth::: 14940316
+E/bandwidth::: 14856271
+E/bandwidth::: 15621860
+E/bandwidth::: 15434001
+I/exoplayer2.dem: WaitForGcToComplete blocked HeapTrim on None for 5.413ms
+I/exoplayer2.dem: Background concurrent copying GC freed 2057(135KB) AllocSpace objects, 2(136KB) LOS objects, 13% free, 39MB/45MB, paused 2.162ms total 136.337ms
+E/bandwidth::: 14186981
+E/bandwidth::: 13272327
+E/bandwidth::: 13550005
+E/bandwidth::: 13416068
+E/bandwidth::: 13310272
+E/bandwidth::: 13258476
+E/bandwidth::: 13247906
+E/bandwidth::: 13239008
+E/bandwidth::: 13341784
+E/bandwidth::: 13099720
+E/bandwidth::: 13924353
+E/bandwidth::: 14555758
+E/bandwidth::: 14461613
+E/bandwidth::: 13585812
+E/bandwidth::: 13307812
+I/exoplayer2.dem: Background concurrent copying GC freed 2209(202KB) AllocSpace objects, 4(184KB) LOS objects, 10% free, 51MB/57MB, paused 15.370ms total 144.099ms
+E/bandwidth::: 14441654
+E/bandwidth::: 14288523
+E/bandwidth::: 14388703
+E/bandwidth::: 13847358
+E/bandwidth::: 12829853
+E/bandwidth::: 13043831
+E/bandwidth::: 12854418
+E/bandwidth::: 13005716
+I/exoplayer2.dem: Background concurrent copying GC freed 832(96KB) AllocSpace objects, 1(68KB) LOS objects, 9% free, 57MB/63MB, paused 2.252ms total 116.326ms
+E/bandwidth::: 13069383
+E/bandwidth::: 13298458
+D/EventLogger: loading [false]
+E/bandwidth::: 13686758
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 14376707
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 14268585
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 13718354
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 13261930
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 13047726
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 13409074
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 13917178
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 13715206
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 13518413
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 13505673
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 13693947
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 15104180
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 15563509

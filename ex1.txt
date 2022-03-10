@@ -1,0 +1,176 @@
+E/bandwidth::: -1
+D/EventLogger: audioEnabled [1.38]
+D/EventLogger: Tracks [
+      Renderer:0 [
+        Group:0, adaptive_supported=YES [
+          [X] Track:0, id=0, mimeType=video/avc, bitrate=5605600, res=1920x1080, supported=YES
+          [X] Track:1, id=1, mimeType=video/avc, bitrate=3405600, res=1280x720, supported=YES
+          [X] Track:2, id=2, mimeType=video/avc, bitrate=2305600, res=854x480, supported=YES
+D/EventLogger:       [X] Track:3, id=3, mimeType=video/avc, bitrate=1152800, res=640x360, supported=YES
+D/EventLogger:       [X] Track:4, id=4, mimeType=video/avc, bitrate=1152800, res=426x240, supported=YES
+        ]
+      ]
+      Renderer:1 [
+        Group:0, adaptive_supported=N/A [
+          [X] Track:0, id=1/15, mimeType=audio/mp4a-latm, channels=2, sample_rate=44100, language=und, supported=YES
+        ]
+      ]
+      Renderer:2 [
+        Group:0, adaptive_supported=N/A [
+          [ ] Track:0, id=1/8219, mimeType=application/cea-608, supported=YES
+        ]
+D/EventLogger:   ]
+      Renderer:3 [
+        Group:0, adaptive_supported=N/A [
+          [X] Track:0, id=1/21, mimeType=application/id3, supported=YES
+        ]
+      ]
+    ]
+E/bandwidth::: 15430605
+E/bandwidth::: 15430605
+I/OMXClient: IOmx service obtained
+D/SurfaceUtils: connecting to surface 0xd85fc008, reason connectToSurface
+I/MediaCodec: [OMX.android.goldfish.h264.decoder] setting surface generation to 9008129
+D/SurfaceUtils: disconnecting from surface 0xd85fc008, reason connectToSurface(reconnect)
+D/SurfaceUtils: connecting to surface 0xd85fc008, reason connectToSurface(reconnect)
+E/ACodec: [OMX.android.goldfish.h264.decoder] setPortMode on output to DynamicANWBuffer failed w/ err -1010
+I/ACodec: codec does not support config priority (err -1010)
+D/SurfaceUtils: disconnecting from surface 0xd85fc008, reason setNativeWindowSizeFormatAndUsage
+D/SurfaceUtils: connecting to surface 0xd85fc008, reason setNativeWindowSizeFormatAndUsage
+D/SurfaceUtils: set up nativeWindow 0xd85fc008 for 1920x1080, color 0x13, rotation 0, usage 0x1002900
+I/OMXClient: IOmx service obtained
+I/ACodec: codec does not support config priority (err -2147483648)
+D/EventLogger: audioDecoderInitialized [1.90, OMX.google.aac.decoder]
+    audioFormatChanged [1.90, id=1/15, mimeType=audio/mp4a-latm, channels=2, sample_rate=44100, language=und]
+D/EventLogger: audioSessionId [41]
+D/EventLogger: state [2.22, true, R]
+E/bandwidth::: 15430605
+D/AudioTrack: getTimestamp_l(12): device stall time corrected using current time 1013998915900
+I/exoplayer2.dem: NativeAlloc concurrent copying GC freed 20012(1855KB) AllocSpace objects, 6(216KB) LOS objects, 49% free, 3209KB/6418KB, paused 4.239ms total 301.573ms
+E/bandwidth::: 15430605
+E/bandwidth::: 17871058
+E/bandwidth::: 18533162
+E/bandwidth::: 18533162
+E/bandwidth::: 19825132
+E/bandwidth::: 22706336
+I/exoplayer2.dem: WaitForGcToComplete blocked Background on None for 14.364ms
+E/bandwidth::: 22054718
+E/bandwidth::: 19294124
+E/bandwidth::: 15586523
+E/bandwidth::: 25034988
+E/bandwidth::: 25034988
+I/exoplayer2.dem: Background concurrent copying GC freed 1041(108KB) AllocSpace objects, 2(136KB) LOS objects, 33% free, 12MB/18MB, paused 1.877ms total 109.384ms
+E/bandwidth::: 19689104
+E/bandwidth::: 24905728
+E/bandwidth::: 24905728
+E/bandwidth::: 25169350
+E/bandwidth::: 23029574
+E/bandwidth::: 28607148
+E/bandwidth::: 28607148
+E/bandwidth::: 24344810
+E/bandwidth::: 19756778
+I/exoplayer2.dem: Background concurrent copying GC freed 226(124KB) AllocSpace objects, 1(68KB) LOS objects, 19% free, 24MB/30MB, paused 4.147ms total 118.143ms
+E/bandwidth::: 19756778
+E/bandwidth::: 16388977
+E/bandwidth::: 19611762
+I/exoplayer2.dem: WaitForGcToComplete blocked HeapTrim on None for 7.180ms
+E/bandwidth::: 10537407
+E/bandwidth::: 15237428
+E/bandwidth::: 15237428
+E/bandwidth::: 16176839
+I/exoplayer2.dem: Background concurrent copying GC freed 516(88KB) AllocSpace objects, 2(136KB) LOS objects, 16% free, 29MB/35MB, paused 3.509ms total 122.375ms
+E/bandwidth::: 14236759
+E/bandwidth::: 17850754
+E/bandwidth::: 17175200
+E/bandwidth::: 11818263
+E/bandwidth::: 15264394
+E/bandwidth::: 15679824
+E/bandwidth::: 16114703
+E/bandwidth::: 17012858
+I/exoplayer2.dem: Background young concurrent copying GC freed 1977(137KB) AllocSpace objects, 1(68KB) LOS objects, 0% free, 35MB/35MB, paused 2.393ms total 127.459ms
+I/exoplayer2.dem: Background concurrent copying GC freed 898(134KB) AllocSpace objects, 4(168KB) LOS objects, 14% free, 35MB/41MB, paused 3.864ms total 145.291ms
+E/bandwidth::: 17499668
+E/bandwidth::: 20544860
+E/bandwidth::: 20571064
+E/bandwidth::: 20571064
+E/bandwidth::: 19748032
+E/bandwidth::: 15612743
+I/exoplayer2.dem: Background young concurrent copying GC freed 1650(115KB) AllocSpace objects, 0(0B) LOS objects, 0% free, 41MB/41MB, paused 12.265ms total 80.185ms
+I/exoplayer2.dem: Background concurrent copying GC freed 400(62KB) AllocSpace objects, 2(136KB) LOS objects, 12% free, 41MB/47MB, paused 2.304ms total 113.124ms
+E/bandwidth::: 16982412
+E/bandwidth::: 16982412
+E/bandwidth::: 17142386
+E/bandwidth::: 19970566
+E/bandwidth::: 18064278
+E/bandwidth::: 17759258
+I/exoplayer2.dem: Background young concurrent copying GC freed 10621(442KB) AllocSpace objects, 5(340KB) LOS objects, 1% free, 46MB/47MB, paused 12.481ms total 49.863ms
+E/bandwidth::: 14769915
+E/bandwidth::: 16066630
+E/bandwidth::: 18386976
+E/bandwidth::: 16131194
+E/bandwidth::: 17140104
+E/bandwidth::: 17140104
+E/bandwidth::: 16458942
+E/bandwidth::: 16910164
+I/exoplayer2.dem: Background young concurrent copying GC freed 1291(85KB) AllocSpace objects, 0(0B) LOS objects, 0% free, 53MB/53MB, paused 10.637ms total 55.147ms
+E/bandwidth::: 14872297
+E/bandwidth::: 14070084
+E/bandwidth::: 20910090
+E/bandwidth::: 14740252
+E/bandwidth::: 17307640
+I/exoplayer2.dem: Background young concurrent copying GC freed 10905(438KB) AllocSpace objects, 4(272KB) LOS objects, 1% free, 58MB/59MB, paused 11.206ms total 57.273ms
+E/bandwidth::: 20587844
+E/bandwidth::: 16002560
+D/EventLogger: loading [false]
+E/bandwidth::: 20206386
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 15604174
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 17993250
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 20552216
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 15313953
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 18767898
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 18767898
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 17340790
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 16165108
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 19100800
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 16838684
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 16838684
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 20847008
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 18749644
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 17286716
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 19320350
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 19818038
+D/EventLogger: loading [true]
+D/EventLogger: loading [false]
+E/bandwidth::: 17286550
